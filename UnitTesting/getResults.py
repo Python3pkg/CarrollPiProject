@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import serial
+import time
+
 import Temperature
 import DissolvedOxygen
 import Website
-import time
 
 tempSensor = Temperature.getSensor()
 

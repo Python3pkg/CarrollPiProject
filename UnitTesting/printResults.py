@@ -2,34 +2,25 @@
 # -*- coding: utf-8 -*-
 
 import serial
-import Temperature
-import DissolvedOxygen
-import time
 
-tempSensor = Temperature.getSensor()
+from Temperature import Temperature as temp
+from DissolvedOxygen import dissolved_oxygen
 
+tempSensor = temp()
 ser = serial.Serial('/dev/ttyAMA0', 38400)
+do_sensor = dissolved_oxygen(ser)
 
-DissolvedOxygen.turnOnLED(ser)
-
-Temperature.prepSystemForTemp()
+do_sensor.turnOnLED()
 
 while True:
-    DissolvedOxygen.passTemperature(ser, Temperature.read_temp_Celsius(tempSensor))
-    DissolvedOxygen.requestData(ser)
+    do_sensor.passTemperature(tempSensor.read_temp_celsius())
+    do_sensor.requestData()
 
     line = ""
 
-    while True:
+    data = ser.read()
+    while (data != '\r'):
+        line = line + data
         data = ser.read()
-        if (data == '\r'):
-            print (Temperature.read_temp_Celsius(tempSensor),
-                                      Temperature.read_temp_Fahrenheit(tempSensor), line, "North Carroll",
-                                      "NCpantherScience")
 
-            line = ""
-            break
-        else:
-            line = line + data
-
-    time.sleep(3600 * 6)
+    print(tempSensor.read_temp_celsius(), tempSensor.read_temp_fahrenheit(), line, "North Carroll")
