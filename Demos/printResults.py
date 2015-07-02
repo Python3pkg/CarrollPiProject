@@ -7,8 +7,7 @@ from Temperature import Temperature as temp
 from DissolvedOxygen import dissolved_oxygen
 
 tempSensor = temp()
-ser = serial.Serial('/dev/ttyAMA0', 38400)
-do_sensor = dissolved_oxygen(ser)
+do_sensor = dissolved_oxygen()
 
 do_sensor.turnOnLED()
 

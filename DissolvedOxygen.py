@@ -1,8 +1,8 @@
-class dissolved_oxygen:
-    ser = ""
+import serial
 
-    def __init__(self, ser):
-        self.ser = ser
+
+class dissolved_oxygen:
+    ser = serial.Serial('/dev/ttyAMA0', 38400)
 
     def turn_on_lights(self):
         """Turns on the LED for debugging"""
