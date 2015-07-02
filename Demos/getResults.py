@@ -4,9 +4,7 @@
 import serial
 import time
 
-import Temperature
-import DissolvedOxygen
-import Website
+from CarrollPiProject import Website, DissolvedOxygen, Temperature
 
 tempSensor = Temperature.getSensor()
 

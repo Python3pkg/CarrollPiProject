@@ -2,7 +2,10 @@ import serial
 
 
 class dissolved_oxygen:
-    ser = serial.Serial('/dev/ttyAMA0', 38400)
+    ser = ""
+
+    def __init__(self):
+        ser = serial.Serial('/dev/ttyAMA0', 38400)
 
     def turn_on_lights(self):
         """Turns on the LED for debugging"""

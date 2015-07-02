@@ -1,10 +1,8 @@
 #!/user/bin/python
 # -*- coding: utf-8 -*-
 
-import serial
-
-from Temperature import Temperature as temp
-from DissolvedOxygen import dissolved_oxygen
+from CarrollPiProject import Temperature as temp
+from CarrollPiProject.DissolvedOxygen import dissolved_oxygen
 
 tempSensor = temp()
 do_sensor = dissolved_oxygen()

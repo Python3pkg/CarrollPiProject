@@ -1,1 +1,10 @@
 .idea/
+CarrolPiProject.egg-info/
+CarrollPiProject.egg-info/
+CarrollPiProject/DissolvedOxygen.pyc
+CarrollPiProject/Temperature.pyc
+CarrollPiProject/Website.pyc
+CarrollPiProject/__init__.pyc
+build/
+dist/
+
