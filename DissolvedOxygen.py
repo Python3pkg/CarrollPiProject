@@ -4,31 +4,29 @@ class dissolved_oxygen:
     def __init__(self, ser):
         self.ser = ser
 
-    def turnOnLED(self):
-        """Turns on the LED for debugging
-
-        Args: \n
-        :param ser: the serial object \n
-        :type ser: str \n
-        """
+    def turn_on_lights(self):
+        """Turns on the LED for debugging"""
         self.ser.write("L,1<CR>")
 
-    def passTemperature(self, temp):
+    def pass_temperature(self, temp):
         """Passes the temperature to the DO sensor for a more accurate reading
 
         Args: \n
-        :param ser: the serial object \n
-        :type ser: str \n
         :param temp: the temperature in Celsius \n
         :type temp: str \n
         """
         self.ser.write("T," + str(temp) + "<CR>")
 
-    def requestData(self):
-        """Sends a request for Dissolved Oxygen data
+    def get_data(self):
+        """Sends a request for Dissolved Oxygen data then interprets and returns the response"""
 
-        Args: \n
-        :param ser: the serial object \n
-        :type ser: str \n
-        """
         self.ser.write("C")
+
+        line = ""
+
+        data = self.ser.read()
+        while (data != '\r'):
+            line = line + data
+            data = self.ser.read()
+
+        return line
