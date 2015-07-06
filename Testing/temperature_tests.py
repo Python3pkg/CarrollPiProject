@@ -9,7 +9,7 @@ class TestMethods(unittest.TestCase):
         try:
             temp_test = temp()
         except:
-            print("Sensor not found")
+            print("Temperature sensor not found")
 
     def test_read_temp_raw(self):
         pass
