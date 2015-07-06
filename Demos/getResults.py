@@ -1,35 +1,17 @@
 #!/user/bin/python
 # -*- coding: utf-8 -*-
 
-import serial
-import time
+from CarrollPiProject.Temperature import Temperature as temp
+from CarrollPiProject.DissolvedOxygen import dissolved_oxygen
+from CarrollPiProject import Website
 
-from CarrollPiProject import Website, DissolvedOxygen, Temperature
+tempSensor = temp()
+do_sensor = dissolved_oxygen()
 
-tempSensor = Temperature.getSensor()
-
-ser = serial.Serial('/dev/ttyAMA0', 38400)
-
-DissolvedOxygen.turnOnLED(ser)
-
-Temperature.prepSystemForTemp()
+do_sensor.turn_on_lights()
 
 while True:
-    DissolvedOxygen.passTemperature(ser, Temperature.read_temp_Celsius(tempSensor))
-    DissolvedOxygen.requestData(ser)
+    do_sensor.pass_temperature(tempSensor.read_temp_celsius())
 
-    line = ""
-
-    while True:
-        data = ser.read()
-        if (data == '\r'):
-            Website.sendDataToWebsite(Temperature.read_temp_Celsius(tempSensor),
-                                      Temperature.read_temp_Fahrenheit(tempSensor), line, "North Carroll",
-                                      "username", "password")
-
-            line = ""
-            break
-        else:
-            line = line + data
-
-    time.sleep(3600 * 6)
+    Website.sendDataToWebsite(tempSensor.read_temp_celsius(), tempSensor.read_temp_fahrenheit(),
+                              do_sensor.get_data(), "North Carroll", "username", "password")
