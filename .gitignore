@@ -7,4 +7,4 @@ CarrollPiProject/Website.pyc
 CarrollPiProject/__init__.pyc
 build/
 dist/
-
+*.pyc

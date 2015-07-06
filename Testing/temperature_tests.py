@@ -3,7 +3,7 @@ import unittest
 from CarrollPiProject.Temperature import Temperature as temp
 
 
-class TestStringMethods(unittest.TestCase):
+class TestMethods(unittest.TestCase):
 
     def test_init_function(self):
         try:
