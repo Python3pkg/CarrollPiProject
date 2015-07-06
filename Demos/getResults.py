@@ -14,5 +14,5 @@ do_sensor.turn_on_lights()
 while True:
     do_sensor.pass_temperature(tempSensor.read_temp_celsius())
 
-    website.sendDataToWebsite(tempSensor.read_temp_celsius(), tempSensor.read_temp_fahrenheit(),
+    website.send_data_to_website(tempSensor.read_temp_celsius(), tempSensor.read_temp_fahrenheit(),
                               do_sensor.get_data())

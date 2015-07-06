@@ -21,7 +21,7 @@ class Website:
         self.username = username
         self.password = password
 
-    def sendDataToWebsite(self, celsius, fahrenheit, dissolvedOxygen):
+    def send_data_to_website(self, celsius, fahrenheit, dissolvedOxygen):
         """Sends Dissoloved oxygen and Temperature data to the website API
 
         Args: \n
