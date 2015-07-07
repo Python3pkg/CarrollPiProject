@@ -8,6 +8,7 @@ class TestMethods(unittest.TestCase):
     def test_init_function(self):
         try:
             website = site("Location", "Username", "Password")
+            print("Logged in successfully")
         except:
             print("Login failed: future problem no login yet")
 
