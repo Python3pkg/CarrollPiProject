@@ -38,4 +38,9 @@ class Website:
                 'school': self.school,
                 'username': self.username,
                 'password': self.password}
-        requests.post("http://www.carrollpiproject.com/dataApi", data=body)
+        response = requests.post("http://www.carrollpiproject.com/dataApi", data=body)
+
+        if response.status_code == requests.codes.ok:
+            return True
+        else:
+            return str(response.status_code) + str(response.text)
